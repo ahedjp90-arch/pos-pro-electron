@@ -1,0 +1,70 @@
+{
+  "name": "pos-pro",
+  "version": "1.0.0",
+  "description": "POS Pro - Syst\u00e8me de caisse professionnel",
+  "author": "Prospera Vision Group",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac --arm64",
+    "build-mac": "electron-builder --mac --arm64",
+    "build-win": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.prospera.pospro",
+    "productName": "POS Pro",
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.business",
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "build/icon.icns"
+    },
+    "dmg": {
+      "title": "POS Pro",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    }
+  },
+  "dependencies": {
+    "escpos": "^3.0.0-alpha.6",
+    "escpos-usb": "^3.0.0-alpha.4",
+    "usb": "^2.14.0"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  }
+}

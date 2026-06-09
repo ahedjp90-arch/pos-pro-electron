@@ -1,0 +1,35 @@
+name: Build POS Pro
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run build-mac
+      - uses: actions/upload-artifact@v3
+        with:
+          name: POS-Pro-Mac
+          path: dist/*.zip
+
+  build-win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run build-win
+      - uses: actions/upload-artifact@v3
+        with:
+          name: POS-Pro-Windows
+          path: dist/*.exe
