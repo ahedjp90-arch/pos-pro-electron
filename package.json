@@ -56,7 +56,8 @@
         }
       ],
       "icon": "build/icon.ico"
-    }
+    },
+    "publish": "never"
   },
   "dependencies": {
     "escpos": "^3.0.0-alpha.6",
