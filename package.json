@@ -7,8 +7,8 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --mac --arm64",
-    "build-mac": "electron-builder --mac --arm64 --publish never",
-    "build-win": "electron-builder --win --x64 --publish never"
+    "build-mac": "electron-builder --mac --arm64",
+    "build-win": "electron-builder --win --x64"
   },
   "build": {
     "appId": "com.prospera.pospro",
@@ -56,8 +56,7 @@
         }
       ],
       "icon": "build/icon.ico"
-    },
-    "publish": "never"
+    }
   },
   "dependencies": {
     "escpos": "^3.0.0-alpha.6",
