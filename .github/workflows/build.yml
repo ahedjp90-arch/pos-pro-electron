@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   build-mac:
     runs-on: macos-latest
@@ -17,10 +20,12 @@ jobs:
       - run: npm run build-mac
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload Mac to Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: POS-Pro-Mac
-          path: dist/*.zip
+          files: dist/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-win:
     runs-on: windows-latest
@@ -33,7 +38,9 @@ jobs:
       - run: npm run build-win
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload Windows to Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: POS-Pro-Windows
-          path: dist/*.exe
+          files: dist/*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
