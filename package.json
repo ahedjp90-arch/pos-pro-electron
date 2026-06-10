@@ -55,9 +55,7 @@
           ]
         }
       ],
-      "icon": "build/icon.ico",
-      "extraResources": [],
-      "executableArgs": []
+      "icon": "build/icon.ico"
     },
     "nsis": {
       "oneClick": true,
