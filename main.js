@@ -20,7 +20,12 @@ function createWindow() {
 
   mainWindow.once('ready-to-show', () => { mainWindow.show(); });
   mainWindow.webContents.session.clearStorageData({storages: ['serviceworkers']});
-  mainWindow.loadFile(path.join(__dirname, 'app', 'index.html'));
+  // Sur Windows charger depuis le web, sur Mac charger local
+  if (process.platform === 'win32') {
+    mainWindow.loadURL('https://caisse.e-plazastore.com');
+  } else {
+    mainWindow.loadFile(path.join(__dirname, 'app', 'index.html'));
+  }
   // mainWindow.webContents.openDevTools();
 }
 
