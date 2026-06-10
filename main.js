@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+if (process.platform === 'win32') app.commandLine.appendSwitch('no-sandbox');
 const path = require('path');
 
 let mainWindow;
