@@ -18,7 +18,7 @@ function createWindow() {
 
   mainWindow.webContents.session.clearStorageData({storages: ['serviceworkers']});
   mainWindow.loadFile(path.join(__dirname, 'app', 'index.html'));
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);
