@@ -5,6 +5,7 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    show: false,
     width: 1280,
     height: 800,
     title: 'POS Pro',
@@ -16,6 +17,7 @@ function createWindow() {
     }
   });
 
+  mainWindow.once('ready-to-show', () => { mainWindow.show(); });
   mainWindow.webContents.session.clearStorageData({storages: ['serviceworkers']});
   mainWindow.loadFile(path.join(__dirname, 'app', 'index.html'));
   // mainWindow.webContents.openDevTools();
