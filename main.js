@@ -41,6 +41,10 @@ ipcMain.handle('get-printers', async () => {
 });
 
 ipcMain.handle('print-ticket', async (event, data) => {
+  // Sur Windows utiliser l'impression système
+  if (process.platform === 'win32') {
+    return { success: false, error: 'USE_WINDOW_PRINT' };
+  }
   console.log('=== IMPRESSION ===', data.lines.length, 'lignes');
   try {
     // Vérifier si impression WiFi
